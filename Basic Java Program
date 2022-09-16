@@ -28,6 +28,7 @@ else
 }
 }
 
+
 //2. Write a program to implement a command line calculator
 //Code:-
 import java.lang.*;
@@ -52,6 +53,8 @@ System.out.println("The sum is " +(a/b));
 }
 }
 }
+
+
 //3. Write a program to accept 10 student’s marks in an array, arrange it into 
 //ascending order, convert into the following grades and print marks and 
 //grades in the tabular form.
@@ -104,6 +107,8 @@ System.out.println(arr[i]+"Distinction");
 }
 }
 }
+
+
 //Q4. WAP to Take input as DD MM YYYY(04 08 2021) in command line and 
 //calculate number of days since 1 January 1970.  
 class Day
