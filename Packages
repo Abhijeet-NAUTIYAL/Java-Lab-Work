@@ -1,0 +1,113 @@
+//Q1. Write a Java program to implement the concept of importing classes from user defined package and created packages
+// Code:-
+//Note you have to save this program in 2 different files 
+//1.file
+
+package Mathematics;
+import java.lang.*;
+public class Arithematic {
+public int add (int x, int y)
+}
+}
+//Save this file with Arithmetic.java
+//2.file
+
+package Calculator;
+import Mathematics.*;
+class Demo
+{
+public static void main(String args[])
+{
+Arithematic obj = new Arithmetic();
+int a = obj.add(5,2);
+System.out.println(a);
+}
+}
+//Save this file with Demo.java
+// run this command in cmd for calling these files
+// javac -d . Arithmetic.java
+// javac -d . Demo.java
+// java Calculator.Demo
+// Your Output will be 7
+
+
+//2. Write a program to make a package Balance. This has an Account class with Display_Balance method. Import Balance package in another program to access
+//Display_Balance method of Account class.
+//Code: -
+// Follow the same step given in line 3 for saving these file and use the same command given in line 28 , 29, 30 for calling.
+//1st 
+
+package Balance;
+import Balance.*;
+class Open 
+{
+public static void main (String[]args)
+{
+Account obj = new Account();
+int z = obj.display_Balance(1000000);
+System.out.println(z);
+}
+}
+
+//2nd
+
+package Balance;
+public class Account
+{
+public int display_Balance(int a)
+{
+return a*100;
+}
+}
+
+
+//3. WAP to create a package p with class A with 4 types of access protected methods. How we will use these methods in different packages class i.e. 
+//there is main () in class B inpackage Q and 4 methods are in Class A in package p
+//Code:-
+//1st
+
+package P;
+public class A{
+
+private int a;
+public String b;
+protected int c;
+int d;
+
+protected void message1()
+{
+System.out.println("I am in protected method");
+}
+private void message2()
+{
+System.out.println("I am in private method");
+}
+void message3()
+{
+System.out.println("I am in default method");
+}
+public void message4()
+{
+System.out.println("I am in public method");
+}
+}
+
+//2nd
+
+package Q;
+import P.*;
+public class B extends A
+{
+public static void main(String args[])
+{
+B obj = new B()
+obj.message1();
+obj.message2();
+obj.message3();
+obj.message4();
+}
+}
+
+
+
+
