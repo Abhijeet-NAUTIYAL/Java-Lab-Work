@@ -1,0 +1,325 @@
+//Q1:- Write a java program to show that private member of a super class cannot be accessed from derived classes.
+//Code:
+
+class SuperModifier
+{
+int a;
+private int b;
+protected int c;
+SuperModifier(int a, int b,int c)
+{
+this.a = a;
+this.b = b;
+this.c = c;
+}
+public void msg1()
+{
+System.out.println("Public method");
+}
+private void msg2()
+{
+System.out.println("Private method");
+}
+protected void msg3()
+{
+System.out.println("protected method");
+}
+void msg4()
+{
+System.out.println("Default method");
+}
+}
+class SubModifier extends SuperModifier
+{
+private int d;
+SubModifier(int a,int b,int c,int d)
+{
+super(a,b,c);
+this.d = d;
+}
+public void msg5()
+{
+System.out.println(d);
+}
+}
+class Test
+{
+public static void main(String[]args)
+{
+SubModifier s = new SubModifier(1,2,3,4);
+s.msg1();
+s.msg3();
+s.msg4();
+s.msg5();
+
+System.out.println(s.a);
+System.out.println(s.b);
+System.out.println(s.c);
+System.out.println(s.d);
+}
+}
+
+//Q2:- Write a program in java to create a Player class. Inherit the classes Cricket_Player, 
+//Football_Player and Hockey_Player from Player class.
+//Code:-
+
+class Player
+{
+String name;
+int age;
+double height;
+Player(String n, int a, double h)
+{
+name = n;
+age = a;
+height = h;
+}
+public void details()
+{
+System.out.println("name" + " " + age + " " + height);
+}
+}
+class FootballPlayer extends Player
+{
+String teamname;
+String position;
+FootballPlayer(String n, int a, double h, String t, String p)
+{
+super(n,a,h);
+teamname = t;
+position = p;
+}
+public void details()
+{
+System.out.println(name = " " + age + " " + height + " " + teamname + " " + position);
+}
+}
+class CricketPlayer extends Player
+{
+String teamname;
+String position;
+CricketPlayer(String n, int a, double h, String t, String p)
+{
+super(n,a,h);
+teamname = t;
+position = p;
+}
+public void details()
+{
+System.out.println(name + " " + age + " " + height + " " + teamname + " " + position);
+}
+}
+class HockeyPlayer extends Player
+{
+String teamname;
+String position;
+HockeyPlayer(String n, int a, double h, String t, String p)
+{
+super(n,a,h);
+teamname = t;
+position = p;
+}
+public void details()
+{
+System.out.println(name + " " + age + " " + height + " " + teamname + " " + position);
+}
+}
+class Main{
+public static void main(String[]args)
+{
+FootballPlayer a = new FootballPlayer("CR",44,6.6,"US","Ist");
+CricketPlayer b = new CricketPlayer("Virat",46,6.3,"INDIA","Ist");
+HockeyPlayer c = new HockeyPlayer("Ric Charlesworth",70,6.1,"Australian","Ist");
+
+a.details();
+b.details();
+c.details();
+}
+}
+
+
+
+//Q3:- Write a class Worker and Derive classes Daily worker and Salaried worker from it. Every worker has a name and a salary rate. Write method Company (int hours) 
+//to compute the week pay of every worker. A Daily Worker is paid on the basis of the number of day he/she works. The salaried worker gets paid the wage for 40 hours
+//a week no matter what the actual hours are. Test this program to calculate the pay of workers. You are expected to use the concept of polymorphism to write this 
+//program.
+//Code:-
+
+class Worker
+{
+String name;
+double salaryrate;
+Worker(String name, double salaryrate)
+{
+this.name=name;
+this.salaryrate=salaryrate;
+}
+}
+class Salariedworker extends Worker
+{
+int hours;
+Salariedworker( String name, double salaryrate, int 
+hours)
+{
+super(name,salaryrate);
+this.hours=hours;
+}
+double compay()
+{
+double salary=50*salaryrate;
+return salary;
+} 
+}
+class Dailyworker extends Worker
+{
+int days;
+Dailyworker(String name, double salaryrate, int days)
+{
+super( name,salaryrate);
+this.days=days;
+}
+double compay()
+{
+double salary=days*salaryrate;
+return salary;
+}
+}
+class Newsalary
+{
+public static void main(String args[])
+{
+Salariedworker sw= new Salariedworker("Abhi",500,20);
+Dailyworker dw= new Dailyworker("rohan",1000,40);
+double sal=sw.compay();
+System.out.println("salary of salaried worker is: "+sal);
+double saly= dw.compay();
+System.out.println("salary of Daily worker is: " + saly);
+}
+}
+
+//4.Consider the trunk calls of a telephone exchange. A trunk call can be ordinary, urgent or lightning. The charges depend on the duration and the type of the call.
+//Write a program using the concept of polymorphism in Java to calculate the charges.
+//Code:-
+
+class Trunk_call
+{
+int duration;
+int charges;
+int charges()
+{
+int cost = duration*charges;
+return cost;
+}
+}
+class Ordinary extends Trunk_call
+{
+int charges()
+{
+int cost=10*10;
+return cost;
+}
+}
+class Urgent extends Trunk_call
+{
+int charges()
+{
+int cost=10*10;
+return cost;
+}
+}
+class Lightning extends Trunk_call
+{
+int charges()
+{
+int cost=10*20;
+return cost;
+}
+}
+class Newcost
+{
+public static void main(String args[])
+{
+Lightning l = new Lightning();
+Urgent u = new Urgent();
+Ordinary o = new Ordinary();
+int ch1=o.charges();
+System.out.println("charges for ordinary call is:"+ch1);
+int ch2= u.charges();
+System.out.println("charges for urgent call is:"+ch2);
+int ch3=l.charges();
+System.out.println("charges for Lightning call is:"+ch3);
+}
+}
+
+
+
+//5.Design a class employee of an organization. An employee has a name, empid, and salary. Write the default constructor,a constructor with parameters
+//(name, empid, and salary) and methods to return name and salary. Also write a method increase Salary that raises the employee’s salary by a certain user 
+//specified percentage. Derive a subclass Manager from employee. Add an instance variable named department to the manager class. Supply a test program that uses theses 
+//classes and methods. 
+// Code:-
+
+class Employee
+{
+String name;
+int empid;
+int salary;
+Employee()
+{
+name="NULL";
+empid=0;
+salary=0;
+}
+Employee(String name,int empid , int salary)
+{
+this.name=name;
+this.empid=empid;
+this.salary=salary;
+}
+String name1()
+{
+return name;
+}
+int salary1()
+{
+return salary;
+}
+int raisesalary()
+{
+int d=30%salary;
+return salary+d;
+}
+}
+class Manager extends Employee
+{
+String department;
+Manager( String name, int empid, int salary, String 
+department)
+{
+super(name,empid,salary);
+this.department=department;
+}
+String department1()
+{
+return department;
+}
+}
+class Newincrement
+{
+public static void main(String args[])
+{
+Manager m1 = new Manager("Abhi", 5000____, 
+140000, "Software developer");
+String s1= m1.name1();
+System.out.println("NAME: "+s1);
+int i1= m1.salary1();
+System.out.println("SALARY: "+i1);
+int i2= m1.raisesalary();
+System.out.println("INCREASED SALARY IS: "+i2);
+String s2= m1.department1();
+System.out.println("DEPARTMENT: "+s2);
+}
+}
+
+
+
