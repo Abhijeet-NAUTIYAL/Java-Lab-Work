@@ -1,0 +1,196 @@
+                                                           //EXPERIMENT – 6
+                                                          //TITLE: Interface
+//1.	Write a program to create interface named test. In this interface the member function is square. Implement this interface in arithmetic class.
+//Create one new class called ToTestInt. In this class use the object of arithmetic class.
+//code: -
+interface Test
+{
+	void square(int a);
+}
+class Arithmetic implements Test
+{
+public void square (int a)
+{
+ System.out.println("square of a number is " +(a * a));
+}
+}
+class ToTestInt
+{
+public static void main (String args[])
+{
+Arithmetic obj = new Arithmetic();
+Test t;
+t = obj;
+t.square(6);
+}
+}
+
+//2. Write a program to create interface A, in this interface we have two method meth1 and meth2. Implements this interface in another class named My Class.
+
+Code:-
+interface A
+{
+void meth1();
+void meth2();
+}
+class MyClass implements A
+{
+ public void meth1()
+{
+System.out.println("method 1");
+}
+public void meth2()
+{
+System.out.println("method 2");
+}
+}
+
+class De
+{
+public static void main ( String args[])
+{
+MyClass obj=new MyClass();
+A a;
+a=obj;
+a.meth1();
+a.meth2();
+}
+}
+
+//3.Write a program in Java to show the usefulness of Interfaces as a place to keep constant value of the program.
+
+//Code:-
+
+interface perimeter {
+static final float pi = 3.142f;
+void peri(float a,float b);
+}
+class square implements perimeter{
+public void peri(float a,float b){
+System.out.println("Perimeter of square : " + (4*a));
+}
+}
+class rectangle implements perimeter {
+public void peri(float a,float b){
+System.out.println("Perimeter of rectangle: "+ 2*(a+b));
+}
+}
+class circle implements perimeter {
+public void peri(float a,float b){
+System.out.println("Circumference of circle : "+ 2*pi*a);
+}
+}
+public class usefulness {
+public static void main (String[] args){
+perimeter p;
+square o1 = new square();
+rectangle o2 = new rectangle();
+circle o3 = new circle();
+p = o1;
+p.peri(12,0);
+p = o2;
+p.peri(12, 8);
+p = o3;
+p.peri(13, 0);
+}
+}
+
+//4. Write a program to create an Interface having two methods division and modules. Create a class, which overrides these methods. 
+
+//Code: -
+
+interface math{
+float division(float a,float b);
+float modulus(float a,float b);
+}
+public class over implements math{
+public float division(float a, float b){
+return (int)a/(int)b;
+}
+public float modulus(float a,float b){
+return a%b;
+}
+public static void main(String[] args){
+over obj = new over();
+System.out.println("The quotient is : " + obj.division(80, 9));
+System.out.println("The remainder is : " + obj.modulus(80, 9));
+}
+}
+
+//5. Write program to create an interface Stack Interface having methods push (), pop () and display (). 
+//Stack Class implements Stack Interface. Class Stack Class contains the main method which is having a switch case for selecting the particular operation of the stack.
+
+//Code:-
+
+import java.util.*;
+interface StackInterface{
+void push(int n); 
+int pop(); 
+void display();
+}
+class StackClass implements StackInterface{
+int [] ar = new int[10];
+int top=-1;
+
+public void push(int n){
+if(top==10){
+System.out.println("Stack overflow");
+}
+else{
+top++;
+ar[top]=n;
+}
+}
+
+public int pop(){
+if(top==-1){
+System.out.println("STACK UNDERFLOW");
+}
+return ar[top--];
+}
+
+public void display(){
+for(int i=top;i>=0;i--){
+System.out.println(ar[i]);
+}
+}
+
+}
+class myStack{
+public static void main(String args[]){
+
+StackClass obj =new StackClass();
+StackInterface s;
+s=obj;
+
+Scanner sl = new Scanner(System.in);
+
+Scanner scan = new Scanner(System.in);
+
+int val=1;
+
+do{
+System.out.println("1.PUSH ");
+System.out.println("2.POP ");
+System.out.println("3.DISPLAY ");
+
+System.out.print("Enter number ");
+
+int az=sl.nextInt();
+
+switch(az){
+	
+	case 1: System.out.println("Enter value to push ");int p=scan.nextInt();  s.push(p); System.out.println("Element pushed "+ p);
+		 break;
+
+	case 2: s.pop(); 
+		break;
+
+	case 3: s.display(); 
+		break;
+
+
+}
+}while(val!=10);
+}
+}
