@@ -1,0 +1,175 @@
+//                                                                    Experiment 7
+//                                                                     Exceptions      
+// 1.	Write a program in Java to display the names and roll numbers of students.
+//Initialize  respective array variables for 10 students. HandleArrayIndexOutOfBoundsExeption, so that any such problem doesn’t cause illegaltermination of program.
+
+//Code: -
+
+import java.util.*;
+class Children
+{
+public static void main(String args[]){
+Scanner sc = new Scanner(System.in);
+int ar[] = new int[10];
+System.out.println("Enter roll no :- ");
+for(int i = 0;i<10;i++){
+ar[i]=sc.nextInt();
+}
+Scanner s = new Scanner(System.in);
+String arr[] = new String[10];
+System.out.println("Enter name of Student:-");
+for(int i=0; i<10;i++){
+arr[i]=s.nextLine();
+}
+try{
+System.out.println(arr[10]);
+}
+catch( ArrayIndexOutOfBoundsException e){
+System.out.println(e);
+}
+}
+}
+
+
+//2	Create an exception class, which throws an exception if operand is nonnumeric in calculating modules. (Use command line arguments).
+// Code:- 
+
+import java.io.*;
+import java.util.*;
+class calculator{
+    public static void main(String[] args) {
+        int i,j;
+        float add,sub,mul,div;
+        System.out.println("CALCULATOR");
+        System.out.println("Enter two Operands:-");
+        Scanner n = new Scanner(System.in);
+        try {
+            {
+                i = n.nextInt();
+                j = n.nextInt();
+                add = i + j;
+                sub = i - j;
+                mul = i * j;
+                div = i / j;
+                System.out.println("Addition : - "+add);
+                System.out.println("Subtraction : - "+sub);
+                System.out.println("Multiplication : - "+mul);
+                System.out.println("Divison : - "+div);
+            }
+        } catch (InputMismatchException e) {
+           System.out.println("Program is Terminated Exception Caught");
+        }
+    }
+}
+
+
+// 3.Write a code to create your own exception class. Create another class, inside main method prompt user to enter a number if number is less than 500 throw instances 
+//of your custom exception class.
+
+// Code: -
+
+import java.util.*;
+class CustomException extends Exception{
+    CustomException(String a){
+    super(a);
+    }
+}
+class Mmain {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter any Number:-");
+    int a = sc.nextInt();
+try{
+        if(a<500){
+            throw new CustomException("Custom Exception Occured");
+        }
+        else{
+            System.out.println("Exception not occured");
+        }
+    }
+catch(CustomException ce){
+    System.out.println(ce.getMessage());
+}    
+}   
+}
+
+
+// 4.You are given two integers, a and b as input, you have to compute a/b: If a and b are not bit signed integers or if is zero, exception will occur 
+//and you have to report it.
+
+//Code: -
+
+import java.util.*;
+class inp{
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int x = sc.nextInt();
+    int y = sc.nextInt();
+    try {
+        int div = x/y;
+        System.out.println("Divison = " + " " + div );
+    } 
+    catch (ArithmeticException e) {
+        System.out.println(e);  
+    }
+    catch(InputMismatchException ce){
+        System.out.println(ce);
+    }
+}
+}
+
+//5. You are required to compute the power of a number by implementing a calculator. Create a class Calc which consists of a single method long power (int, int).
+//This method takes two integers, a and b, as parameters and finds ab. If either a or b is negative, then the method must throw an exception which says "a and b 
+//should not be negative". Also, if both a and b are zero, then the method must throw an exception which says "a and b should not be zero "For example, -4 and -5 
+//would result in java. lang. Exception: a and b should not be negative.
+//Complete the function power in class Calc and return the appropriate result after the power operation or an appropriate exception as detailed above.
+
+//Code: -
+
+import java.util.*;
+import java.lang.Exception;
+import java.lang.*;
+class NegativeException extends Exception {
+    NegativeException(String a){
+        super(a);
+    }
+}
+class ZeroException extends Exception{
+    ZeroException(String b){
+        super(b);
+    }
+}
+class ext{
+    public double power(double a, double b) throws NegativeException , ZeroException{
+        if (a < 0 || b < 0){
+            throw new NegativeException ("NegativeNumberException: Entered numbers should not be negative");
+        }
+        else if(a==0 && b==0){
+            throw new ZeroException ("ZeroNumberException: Enter numbers should not be zero");
+        }
+        return Math.pow(a,b);
+    }
+}
+public class Ma_in{
+    public static void main(String[] args) {
+        ext ex = new ext();
+
+        System.out.println("Enter Two Number:-");
+        Scanner s = new Scanner(System.in);
+        double  x = s.nextInt();
+        double  y = s.nextInt();
+        try {
+            double res=ex.power(x,y);
+            System.out.println(res);
+        } 
+        catch (NegativeException n) {
+            System.out.println(n.getMessage());
+        }
+        catch (ZeroException z){
+            System.out.println(z.getMessage());
+        }
+    }
+}
+
+
+
